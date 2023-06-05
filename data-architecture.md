@@ -2,7 +2,7 @@
 
 | field         | type                     | validations           |
 | ------------- | ------------------------ | --------------------- |
-| email         | string                   | email                 |
+| email         | string                   | email, unique         |
 | first_name    | string                   | presence, length=1-20 |
 | last_name     | string                   | presence, length=1-20 |
 | profile_photo | active storage reference | -                     |
