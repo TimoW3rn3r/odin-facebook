@@ -75,3 +75,5 @@ group :development, :test do
   gem "webdrivers"
   gem "faker"
 end
+
+gem "devise", "~> 4.9"
