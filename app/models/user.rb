@@ -4,6 +4,8 @@ class User < ApplicationRecord
   # first_name    :string
   # last_name     :string
   # address       :string
+  
+  has_many :posts
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -13,4 +15,8 @@ class User < ApplicationRecord
   # https://stackoverflow.com/questions/38611405/email-validation-in-ruby-on-rails
   # validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP } 
   validates :email, format: { with: Devise.email_regexp }
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
