@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    @apply text-2xl font-bold my-4;
+  }
+  h2 {
+    @apply text-xl font-bold my-4;
+  }
+}
 /*
 
 @layer components {

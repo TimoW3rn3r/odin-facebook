@@ -1,0 +1,20 @@
+<header class="flex justify-between bg-blue-800 py-2 px-4 text-white">
+  <div class="font-bold text-4xl">
+    Railsbook
+  </div>
+
+  <div class="flex gap-2 items-center">
+    <% if user_signed_in? %>
+      <div class="font-medium text-xl">
+        <%= link_to current_user.full_name, current_user %>
+      </div>
+      <div class="text-sm text-gray-200">
+        <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
+      </div>
+    <% else %>
+      <div class="text-sm text-gray-200 font-medium text-base">
+        <%= link_to "Sign In", new_user_session_path %>
+      </div>
+    <% end %>
+  </div>
+</header>
