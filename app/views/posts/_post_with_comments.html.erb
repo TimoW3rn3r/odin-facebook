@@ -1,4 +1,4 @@
-<div class="flex flex-col bg-white px-8 pt-8 pb-8 rounded-md drop-shadow-lg">
+<div class="px-8 pt-8 pb-8 flex flex-col bg-white rounded-md drop-shadow-lg">
   <div class="mb-8">
     <div class="font-semibold">
       <%= post.user.full_name %>
@@ -11,7 +11,7 @@
   <hr>
 
   <div class="px-4 py-8">
-    <%= render @post.comments %>
+    <%= render post.comments %>
   </div>
 
   <%= render "comments/form", commentable: @post, commentable_type: 'post' %>
