@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:user).desc
+    @posts = Post.includes(:user, :comments).desc
   end
 
   def new
@@ -8,8 +8,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(body: post_params[:body],
-                    user: current_user)
+    @post = current_user.posts.build(post_params)
 
     if @post.save
       flash[:notice] = "Post created successfully."
@@ -17,6 +16,12 @@ class PostsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @post = Post.includes(:comments).find(params[:id])
+    @user = @post.user
+    # @comment = Comment.new
   end
 
   private

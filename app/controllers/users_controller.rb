@@ -3,7 +3,13 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def profile
+    @user = current_user
+    @posts = current_user.posts.desc
+  end
+
   def show
-    @user = User.includes(:posts).find(params[:id])
+    @user = User.find(params[:id])
+    @posts = @user.posts.desc
   end
 end

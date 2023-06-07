@@ -9,13 +9,23 @@
   h2 {
     @apply text-xl font-bold my-4;
   }
-}
-/*
-
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  hr {
+    @apply my-4 h-0.5 bg-slate-300;
   }
 }
 
-*/
+@layer components {
+  .btn {
+    @apply py-2 px-4 font-semibold w-max rounded-full cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply text-white bg-green-500;
+  }
+
+  .btn-secondary {
+    @apply text-gray-500 bg-slate-100 hover:bg-slate-200;
+  }
+
+}
+

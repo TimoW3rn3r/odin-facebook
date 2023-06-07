@@ -1,0 +1,13 @@
+<div>
+  <%= form_with model: [commentable, Comment.new], class: 'flex gap-4' do |f| %>
+
+    <div class="grow">
+      <%= f.text_field :body, placeholder: "Write a comment...", class: "w-full bg-slate-200 rounded-full border-none" %>
+      <%= f.hidden_field :commentable_id, value: commentable.id %>
+      <%= f.hidden_field :commentable_type, value: commentable_type %>
+    </div>
+
+    <%= f.submit "Comment", class: "btn btn-secondary flex-none" %>
+
+  <% end %>
+</div>
