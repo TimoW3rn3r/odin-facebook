@@ -1,19 +1,28 @@
-<div class="my-2 w-max">
-  <div class="px-4 py-2 w-max bg-slate-200 rounded-2xl shadow-sm">
-    <div class="font-bold text-sm">
-      <%= link_to comment.user.full_name, comment.user %>
+<div class="my-2 flex gap-2">
+
+  <div class="">
+    <%= image_tag "morgan.png", class: "rounded-full", size: "36" %>
+  </div>
+
+
+  <div class="w-max">
+    <div class="px-4 py-2 w-max bg-slate-200 rounded-2xl shadow-sm">
+      <div class="font-bold text-sm">
+        <%= link_to comment.user.full_name, comment.user %>
+      </div>
+      <div>
+        <%= comment.body %>
+      </div>
     </div>
-    <div>
-      <%= comment.body %>
+
+    <div class="px-4 flex gap-4 items-center">
+      <div class="text-gray-600 font-semibold text-xs">
+        Like
+      </div>
+      <div class="text-gray-400 text-xs">
+        <%= local_time_ago(comment.created_at) %>
+      </div>
     </div>
   </div>
 
-  <div class="px-4 flex gap-4 items-center">
-    <div class="text-gray-600 font-semibold text-xs">
-      Like
-    </div>
-    <div class="text-gray-400 text-xs">
-      <%= local_time_ago(comment.created_at) %>
-    </div>
-  </div>
 </div>

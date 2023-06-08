@@ -1,11 +1,18 @@
 <div class="my-8 px-8 pt-8 pb-8 flex flex-col bg-white rounded-md drop-shadow-lg">
 
-  <div class="font-semibold">
-    <%= link_to post.user.full_name, post.user %>
-  </div>
-  <div class="text-gray-400 text-sm">
-    <%#= time_tag post.created_at, "data-local": "time-ago" %>
-    <%= local_time_ago(post.created_at) %>
+  <div class="flex gap-2">
+    <div>
+      <%= image_tag "morgan.png", class: "rounded-full", size: "48" %>
+    </div>
+    <div>
+      <div class="font-semibold">
+        <%= link_to post.user.full_name, post.user %>
+      </div>
+      <div class="text-gray-400 text-sm">
+        <%#= time_tag post.created_at, "data-local": "time-ago" %>
+        <%= local_time_ago(post.created_at) %>
+      </div>
+    </div>
   </div>
   <p class="mt-2 mb-4 text-lg">
     <%= post.body %>
