@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_commentable
+  before_action :set_commentable, only: [:create]
 
   def new
     @comment = Comment.new
@@ -22,13 +22,12 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :commentable_id, :commentable_type)
+    params.require(:comment).permit(:body)
   end
 
   def set_commentable
-    if commentable_id = params[:post_id]
-      @commentable = Post.find(commentable_id)
-      @commentabe_type = 'Post'
+    if params[:post_id]
+      @commentable = Post.find(params[:post_id])
     end
   end
 end
