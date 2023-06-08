@@ -3,7 +3,11 @@
   <div class="font-semibold">
     <%= link_to post.user.full_name, post.user %>
   </div>
-  <p class="mb-4">
+  <div class="text-gray-400 text-sm">
+    <%#= time_tag post.created_at, "data-local": "time-ago" %>
+    <%= local_time_ago(post.created_at) %>
+  </div>
+  <p class="mt-2 mb-4 text-lg">
     <%= post.body %>
   </p>
   <div class="flex justify-between text-gray-500">
@@ -13,6 +17,19 @@
 
   <hr>
 
+  <div class="flex gap-4 justify-around items-center text-gray-600 font-semibold">
+    <div>
+      Like
+    </div>
+    <div>
+      Comment
+    </div>
+    <div>
+      Share
+    </div>
+  </div>
+
+  <hr>
   <% if all_comments %>
     
     <div class="px-4 py-8">

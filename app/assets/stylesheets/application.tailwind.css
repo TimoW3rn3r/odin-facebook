@@ -10,7 +10,7 @@
     @apply text-xl font-bold my-4;
   }
   hr {
-    @apply mt-2 mb-4 h-0.5 bg-slate-300;
+    @apply mt-2 mb-2 h-0.5 bg-slate-300;
   }
 }
 
