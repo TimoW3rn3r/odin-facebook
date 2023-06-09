@@ -12,4 +12,25 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts.includes(comments: [:user]).desc
   end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update!(user_params)
+      flash[:notice] = "Profile updated successfully."
+      redirect_to current_user
+    else
+      flash[:notice] = @user.errors.full_messages.first
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :address, :profile_picture)
+  end
 end
