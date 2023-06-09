@@ -1,9 +1,12 @@
 <div class="my-2 flex gap-2">
 
-  <div class="">
-    <%= image_tag "morgan.png", class: "rounded-full", size: "36" %>
+  <div class="mt-2">
+    <% if comment.user.profile_picture.attached? %>
+      <%= image_tag comment.user.profile_picture.variant(:thumb), class: "h-9 w-9 rounded-full object-cover" %>
+    <% else %>
+      <%= image_tag "default.jpeg", class: "h-9 w-9 rounded-full object-cover" %>
+    <% end %>
   </div>
-
 
   <div class="w-max">
     <div class="px-4 py-2 w-max bg-slate-200 rounded-2xl shadow-sm">

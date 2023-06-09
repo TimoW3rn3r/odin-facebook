@@ -2,7 +2,11 @@
 
   <div class="flex gap-2">
     <div>
-      <%= image_tag "morgan.png", class: "rounded-full", size: "48" %>
+      <% if post.user.profile_picture.attached? %>
+        <%= image_tag post.user.profile_picture.variant(:thumb), class: "h-12 w-12 rounded-full object-cover" %>
+      <% else %>
+        <%= image_tag "default.jpeg", class: "h-12 w-12 rounded-full object-cover" %>
+      <% end %>
     </div>
     <div>
       <div class="font-semibold">
