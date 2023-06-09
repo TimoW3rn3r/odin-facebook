@@ -1,0 +1,23 @@
+<h1>Edit Profile</h1>
+
+<div class="my-4 bg-white px-8 py-4 rounded-md drop-shadow-lg">
+  <%= form_with model: @user do |f|%>
+    <div>
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name %>
+    </div>
+    <div>
+      <%= f.label :last_name %><br>
+      <%= f.text_field :last_name %>
+    </div>
+    <div>
+      <%= f.label :address %><br>
+      <%= f.text_field :address %>
+    </div>
+    <div>
+      <%= f.label :profile_picture %><br>
+      <%= f.file_field :profile_picture %>
+    </div>
+    <%= f.submit "Update Profile", class: "btn btn-secondary" %>
+  <% end %>
+</div>
