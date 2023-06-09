@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   end
 
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show, :update]
   get 'profile', to: 'users#profile'
+  get 'profile/edit', to: 'users#edit'
 
   root 'users#index'
 end
