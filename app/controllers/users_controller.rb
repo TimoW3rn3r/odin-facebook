@@ -5,12 +5,12 @@ class UsersController < ApplicationController
 
   def profile
     @user = current_user
-    @posts = @user.posts.includes(comments: [:user]).desc
+    @posts = @user.posts.includes(comments: [:user], likes: [:user]).desc
   end
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.includes(comments: [:user]).desc
+    @posts = @user.posts.includes(comments: [:user], likes: [:user]).desc
   end
 
   def edit
