@@ -14,4 +14,9 @@ module LikesHelper
       [likeable, Like.new]
     end
   end
+
+  def commentable_comment_likes_path(comment)
+    commentable_type = comment.commentable.class.to_s.downcase
+    self.send("#{commentable_type}_comment_likes_path", comment.commentable, comment)
+  end
 end

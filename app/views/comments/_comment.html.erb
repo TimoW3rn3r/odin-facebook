@@ -20,7 +20,7 @@
 
     <div class="px-4 flex gap-4 items-center text-gray-600 font-medium text-xs">
       <div>
-        <span> ♡<%= comment.likes.size %> </span>
+        <span> ♡<%= link_to comment.likes.size, commentable_comment_likes_path(comment) %> </span>
       </div>
       <div>
         <% if like = find_like(comment, current_user) %>
