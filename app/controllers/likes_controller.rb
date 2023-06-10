@@ -6,15 +6,15 @@ class LikesController < ApplicationController
   end
 
   def create
-    @like = current_user.likes.build(
-      likeable: @likeable
+    @like = @likeable.likes.build(
+      user: current_user
     )
 
     if @like.save
       flash[:notice] = "Liked successfully."
-      redirect_to @likeable
+      redirect_to redirectable_path(@likeable)
     else
-      redirect_to @likeable
+      redirect_to redirectable_path(@likeable)
     end
   end
 
@@ -22,13 +22,15 @@ class LikesController < ApplicationController
     @like = Like.find(params[:id])
     @like.destroy
     flash[:notice] = "Disliked successfully."
-    redirect_to @likeable
+    redirect_to redirectable_path(@likeable)
   end
 
   private
 
   def set_likeable
-    if params[:post_id]
+    if params[:comment_id]
+      @likeable = Comment.find(params[:comment_id])
+    elsif params[:post_id]
       @likeable = Post.find(params[:post_id])
     end
   end
@@ -36,6 +38,14 @@ class LikesController < ApplicationController
   def set_likeable_with_eager_load_likes
     if params[:post_id]
       @likeable = Post.includes(likes: [:user]).find(params[:post_id])
+    end
+  end
+
+  def redirectable_path(likeable)
+    if likeable.respond_to? :commentable
+      likeable.commentable
+    else
+      likeable
     end
   end
 end
