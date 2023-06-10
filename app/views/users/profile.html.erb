@@ -1,4 +1,13 @@
 <h1><%= @user.full_name %></h1>
+<%= link_to "Edit Profile", profile_edit_path, class: "btn btn-primary" %>
+
+<div class="mt-4">
+  <% if @user.profile_picture.attached? %>
+    <%= image_tag @user.profile_picture %>
+  <% else %>
+    <%= image_tag "default.jpeg" %>
+  <% end %>
+</div>
 
 <%= render "posts/form", post: Post.new %>
 
