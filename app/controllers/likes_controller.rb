@@ -36,7 +36,9 @@ class LikesController < ApplicationController
   end
 
   def set_likeable_with_eager_load_likes
-    if params[:post_id]
+    if params[:comment_id]
+      @likeable = Comment.includes(likes: [:user]).find(params[:comment_id])
+    elsif params[:post_id]
       @likeable = Post.includes(likes: [:user]).find(params[:post_id])
     end
   end
