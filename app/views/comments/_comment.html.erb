@@ -18,11 +18,20 @@
       </div>
     </div>
 
-    <div class="px-4 flex gap-4 items-center">
-      <div class="text-gray-600 font-semibold text-xs">
-        Like
+    <div class="px-4 flex gap-4 items-center text-gray-600 font-medium text-xs">
+      <div>
+        <span> ♡<%= comment.likes.size %> </span>
       </div>
-      <div class="text-gray-400 text-xs">
+      <div>
+        <% if like = LikesHelper.find_like(comment, current_user) %>
+          <%= link_to "Like", [comment.commentable, comment, like],
+            data: { turbo_method: :delete },
+            class: "text-blue-500 font-semibold" %>
+        <% else %>
+          <%= render "likes/form", likeable: comment %>
+        <% end %>
+      </div>
+      <div class="text-gray-400">
         <%= local_time_ago(comment.created_at) %>
       </div>
     </div>
