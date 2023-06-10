@@ -81,3 +81,5 @@ gem "devise", "~> 4.9"
 gem "local_time", "~> 2.1"
 
 gem "image_processing", "~> 1.12"
+
+gem "pry-byebug", "~> 3.10"
