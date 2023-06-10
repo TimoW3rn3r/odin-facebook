@@ -23,7 +23,7 @@
         <span> ♡<%= comment.likes.size %> </span>
       </div>
       <div>
-        <% if like = LikesHelper.find_like(comment, current_user) %>
+        <% if like = find_like(comment, current_user) %>
           <%= link_to "Like", [comment.commentable, comment, like],
             data: { turbo_method: :delete },
             class: "text-blue-500 font-semibold" %>

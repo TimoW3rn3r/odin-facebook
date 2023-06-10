@@ -30,7 +30,7 @@
 
   <div class="flex gap-4 justify-around items-center text-gray-600 font-semibold">
     <div>
-      <% if like = LikesHelper.find_like(post, current_user) %>
+      <% if like = find_like(post, current_user) %>
         <%= link_to "Like", [post, like],
           data: { turbo_method: :delete },
           class: "text-blue-500 font-bold" %>
