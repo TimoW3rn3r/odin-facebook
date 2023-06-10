@@ -22,7 +22,7 @@
     <%= post.body %>
   </p>
   <div class="flex justify-between text-gray-500">
-    <span> ♡<%= post.likes.size %> </span>
+    <span> ♡<%= link_to post.likes.size, post_likes_path(post) %> </span>
     <span><%= pluralize(post.comments.size, 'comment') %></span>
   </div>
 
