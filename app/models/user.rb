@@ -24,4 +24,8 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def friendships
+    Friendship.where("initiator_id = ? OR target_id = ?", id, id)
+  end
 end
