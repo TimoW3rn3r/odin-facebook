@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :likes, only: [:index, :create, :destroy]
   end
 
+  resources :friendships, only: [:create, :destroy]
+  patch 'friendships/:id', to: 'friendships#accept'
 
   resources :users, only: [:index, :show, :update]
   get 'profile', to: 'users#profile'
