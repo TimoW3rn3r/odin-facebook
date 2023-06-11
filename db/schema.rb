@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_09_025529) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_11_034136) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_025529) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "initiator_id", null: false
+    t.bigint "target_id", null: false
+    t.boolean "accepted", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["initiator_id"], name: "index_friendships_on_initiator_id"
+    t.index ["target_id"], name: "index_friendships_on_target_id"
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "likeable_type"
@@ -90,6 +100,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_09_025529) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "users", on_delete: :cascade
+  add_foreign_key "friendships", "users", column: "initiator_id", on_delete: :cascade
+  add_foreign_key "friendships", "users", column: "target_id", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :cascade
   add_foreign_key "posts", "users", on_delete: :cascade
 end
