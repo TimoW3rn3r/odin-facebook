@@ -1,0 +1,16 @@
+<div class="flex gap-4">
+  <% friendship, status = friendship_status(user.id) %>
+  <% if friendship %>
+    <% if status == 'accepted' %>
+      <%= button_to "Unfriend", friendship, method: :delete, class: "btn btn-secondary" %>
+    <% elsif status == 'incoming' %>
+      <%= button_to "Accept", friendship, method: :patch, class: "btn btn-secondary" %>
+      <%= button_to "Decline", friendship, method: :delete, class: "btn btn-secondary" %>
+    <% elsif status == 'outgoing' %>
+      <%= button_to "Cancel Friend Request", friendship, method: :delete, class: "btn btn-secondary" %>
+    <% end %>
+  <% elsif status == 'self' %>
+  <% else %>
+    <%= render "friendships/add_friend", user: user %>
+  <% end %>
+</div>
