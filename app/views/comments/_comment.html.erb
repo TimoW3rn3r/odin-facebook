@@ -2,9 +2,9 @@
 
   <div class="mt-2">
     <% if comment.user.profile_picture.attached? %>
-      <%= image_tag comment.user.profile_picture.variant(:thumb), class: "h-9 w-9 rounded-full object-cover" %>
+      <%= image_tag comment.user.profile_picture.variant(:thumb), class: "profile-picture-small" %>
     <% else %>
-      <%= image_tag "default.jpeg", class: "h-9 w-9 rounded-full object-cover" %>
+      <%= image_tag "default.jpeg", class: "profile-picture-small" %>
     <% end %>
   </div>
 

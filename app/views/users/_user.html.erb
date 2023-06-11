@@ -3,9 +3,9 @@
   <div class="my-4 flex gap-2 items-center">
     <div>
       <% if user.profile_picture.attached? %>
-        <%= image_tag user.profile_picture.variant(:thumb), class: "h-12 w-12 rounded-full object-cover" %>
+        <%= image_tag user.profile_picture.variant(:thumb), class: "profile-picture" %>
       <% else %>
-        <%= image_tag "default.jpeg", class: "h-12 w-12 rounded-full object-cover" %>
+        <%= image_tag "default.jpeg", class: "profile-picture" %>
       <% end %>
     </div>
 
