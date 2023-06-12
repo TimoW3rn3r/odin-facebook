@@ -1,6 +1,12 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:user, comments: [:user, likes: [:user]], likes: [:user]).desc
+    # show friends posts and current_user posts
+    users = current_user.friends
+    users << current_user
+
+    @posts = Post.includes(:user, comments: [:user, likes: [:user]], likes: [:user])
+      .where(user: users)
+      .desc
   end
 
   def new
