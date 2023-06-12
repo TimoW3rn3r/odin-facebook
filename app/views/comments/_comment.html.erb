@@ -19,9 +19,15 @@
     </div>
 
     <div class="px-4 flex gap-4 items-center text-gray-600 font-medium text-xs">
-      <div>
-        <span> ♡<%= link_to comment.likes.size, commentable_comment_likes_path(comment) %> </span>
-      </div>
+      <span>♡
+        <% if (likes_count = comment.likes.size) == 0 %>
+          0
+        <% else %>
+          <%= link_to likes_count,
+            commentable_comment_likes_path(comment),
+            data: { turbo_frame: "_top" } %>
+        <% end %>
+      </span>
       <div>
         <% if like = find_like(comment, current_user) %>
           <%= link_to "Like", [comment.commentable, comment, like],
