@@ -14,11 +14,11 @@
   <body class="bg-slate-100">
     <%= render "layouts/navbar" %>
 
-    <div id="flash" class="flash">
-      <%= render "layouts/flash" %>
-    </div>
+    <main class="container mx-auto my-8 px-4 md:max-w-xl md:px-0">
+      <div id="flash" class="flash">
+        <%= render "layouts/flash" %>
+      </div>
 
-    <main class="container mx-auto my-8 md:max-w-xl">
       <%= yield %>
     </main>
   </body>
