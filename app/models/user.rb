@@ -28,4 +28,11 @@ class User < ApplicationRecord
   def friendships
     Friendship.where("initiator_id = ? OR target_id = ?", id, id)
   end
+
+  def friends
+    accepted_friendships = friendships.includes(:initiator, :target).where("accepted = ?", true)
+    accepted_friendships.map do |friendship|
+      friendship.initiator == self ? friendship.target : friendship.initiator
+    end
+  end
 end

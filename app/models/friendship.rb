@@ -4,4 +4,6 @@ class Friendship < ApplicationRecord
   # target_id:     reference
   # accepted:      boolean
 
+  belongs_to :initiator, class_name: "User"
+  belongs_to :target, class_name: "User"
 end
