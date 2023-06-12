@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:notice] = "Post created successfully."
-      redirect_to posts_path
+      redirect_back_or_to @post
     else
       render :new, status: :unprocessable_entity
     end
