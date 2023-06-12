@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   patch 'friendships/:id', to: 'friendships#accept'
 
   resources :users, only: [:index, :show, :update]
+  get 'users/:id/friends', to: 'users#friends', as: 'user_friends'
   get 'profile', to: 'users#profile'
   get 'profile/edit', to: 'users#edit'
 
