@@ -24,7 +24,15 @@
       <%= post.body %>
     </p>
     <div class="flex justify-between text-gray-500">
-      <span> ♡<%= link_to post.likes.size, post_likes_path(post) %> </span>
+      <span>♡
+        <% if (likes_count = post.likes.size) == 0 %>
+          0
+        <% else %>
+          <%= link_to likes_count,
+            post_likes_path(post),
+            data: { turbo_frame: "_top" } %>
+        <% end %>
+      </span>
       <span><%= pluralize(post.comments.size, 'comment') %></span>
     </div>
 
@@ -51,7 +59,7 @@
     <hr>
     <% if all_comments %>
       
-      <div class="px-4 py-2">
+      <div class="px-2 py-2">
         <%= render post.comments %>
       </div>
       <%= render "comments/form", commentable: @post %>
