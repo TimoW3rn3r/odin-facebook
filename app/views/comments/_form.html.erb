@@ -1,8 +1,15 @@
 <div>
-  <%= form_with model: [commentable, Comment.new], class: 'flex gap-4' do |f| %>
+  <%= form_with model: [commentable, Comment.new], class: 'flex gap-2 items-center' do |f| %>
+    <div class="shrink-0">
+      <% if current_user.profile_picture.attached? %>
+        <%= image_tag current_user.profile_picture.variant(:thumb), class: "profile-picture-small" %>
+      <% else %>
+        <%= image_tag "default.jpeg", class: "profile-picture-small" %>
+      <% end %>
+    </div>
 
     <div class="grow">
-      <%= f.text_field :body, placeholder: "Write a comment...", class: "w-full bg-slate-200 rounded-full border-none" %>
+      <%= f.text_field :body, placeholder: "Write a comment...", class: "px-4 w-full bg-slate-200 rounded-2xl border-none shadow-sm" %>
     </div>
 
     <%= f.submit "Comment", class: "btn btn-secondary flex-none" %>
