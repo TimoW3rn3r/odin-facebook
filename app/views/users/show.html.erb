@@ -1,6 +1,10 @@
-<h1><%= @user.full_name %></h1>
+<div class="mt-8 px-8 py-8 bg-white rounded-md shadow-lg flex gap-4 items-center">
+  <h1><%= @user.full_name %></h1>
 
-<div class="mt-4">
+  <%= render "friendships/buttons", user: @user %>
+</div>
+
+<div>
   <% if @user.profile_picture.attached? %>
     <%= image_tag @user.profile_picture %>
   <% else %>
