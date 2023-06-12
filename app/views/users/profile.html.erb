@@ -1,12 +1,18 @@
-<h1><%= @user.full_name %></h1>
-<%= link_to "Edit Profile", profile_edit_path, class: "btn btn-primary" %>
+<div class="mt-8 bg-white rounded-md shadow-lg">
+  <div class="px-8 py-8">
+    <div class="flex gap-4 items-center">
+      <h1><%= @user.full_name %></h1>
+      <%= link_to "Edit Profile", profile_edit_path, class: "btn btn-primary" %>
+    </div>
+  </div>
 
-<div class="mt-4">
-  <% if @user.profile_picture.attached? %>
-    <%= image_tag @user.profile_picture %>
-  <% else %>
-    <%= image_tag "default.jpeg" %>
-  <% end %>
+  <div class="flex justify-center">
+    <% if @user.profile_picture.attached? %>
+      <%= image_tag @user.profile_picture, class: "w-full h-auto" %>
+    <% else %>
+      <%= image_tag "default.jpeg" %>
+    <% end %>
+  </div>
 </div>
 
 <%= render "posts/form", post: Post.new %>
