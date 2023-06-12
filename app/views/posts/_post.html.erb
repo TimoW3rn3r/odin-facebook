@@ -12,7 +12,9 @@
       </div>
       <div>
         <div class="font-semibold">
-          <%= link_to post.user.full_name, post.user %>
+          <%= link_to post.user.full_name,
+            post.user,
+            data: { turbo_frame: "_top" } %>
         </div>
         <div class="text-gray-400 text-sm">
           <%#= time_tag post.created_at, "data-local": "time-ago" %>
