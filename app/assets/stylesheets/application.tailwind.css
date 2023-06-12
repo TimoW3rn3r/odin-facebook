@@ -34,5 +34,9 @@
   .profile-picture-small {
     @apply h-9 w-9 rounded-full object-cover;
   }
+
+  .break-word {
+    word-break: break-word;
+  }
 }
 

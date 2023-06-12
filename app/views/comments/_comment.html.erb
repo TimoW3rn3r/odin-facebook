@@ -1,6 +1,6 @@
 <div class="my-2 flex gap-2">
 
-  <div class="mt-2">
+  <div class="mt-2 shrink-0">
     <% if comment.user.profile_picture.attached? %>
       <%= image_tag comment.user.profile_picture.variant(:thumb), class: "profile-picture-small" %>
     <% else %>
@@ -9,13 +9,13 @@
   </div>
 
   <div class="w-max">
-    <div class="px-4 py-2 w-max bg-slate-200 rounded-2xl shadow-sm">
+    <div class="px-4 py-2 max-w-full bg-slate-200 rounded-2xl shadow-sm">
       <div class="font-bold text-sm">
         <%= link_to comment.user.full_name, comment.user %>
       </div>
-      <div>
+      <p class="break-word">
         <%= comment.body %>
-      </div>
+      </p>
     </div>
 
     <div class="px-4 flex gap-4 items-center text-gray-600 font-medium text-xs">
