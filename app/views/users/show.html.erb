@@ -1,15 +1,22 @@
-<div class="mt-8 px-8 py-8 bg-white rounded-md shadow-lg flex gap-4 items-center">
-  <h1><%= @user.full_name %></h1>
+<div class="mt-8 bg-white rounded-md shadow-lg">
+  <div class="px-8 py-8">
+    <div class="flex gap-4 items-center">
+      <h1><%= @user.full_name %></h1>
 
-  <%= render "friendships/buttons", user: @user %>
-</div>
+      <%= render "friendships/buttons", user: @user %>
+    </div>
 
-<div>
-  <% if @user.profile_picture.attached? %>
-    <%= image_tag @user.profile_picture %>
-  <% else %>
-    <%= image_tag "default.jpeg" %>
-  <% end %>
+    <%= link_to pluralize(@user.friends.size, "friend"),
+                user_friends_path(@user) %>
+  </div>
+
+  <div class="flex justify-center">
+    <% if @user.profile_picture.attached? %>
+      <%= image_tag @user.profile_picture %>
+    <% else %>
+      <%= image_tag "default.jpeg" %>
+    <% end %>
+  </div>
 </div>
 
 <%= render @posts, all_comments: false %>
