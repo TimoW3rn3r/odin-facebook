@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_commentable, only: [:create]
+  before_action :set_commentable
 
   def new
     @comment = Comment.new
@@ -17,6 +17,32 @@ class CommentsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+
+    if @comment.user == current_user
+      @comment.body = params[:comment][:body]
+      if @comment.save
+        flash[:notice] = "Comment updated successfully."
+      end
+    end
+
+    redirect_to @commentable
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.user == current_user
+      @comment.destroy
+      flash[:notice] = "Comment deleted successfully."
+    end
+    redirect_to @commentable
   end
 
   private
