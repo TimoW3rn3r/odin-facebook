@@ -2,25 +2,40 @@
 
   <div class="my-8 px-8 pt-8 pb-8 flex flex-col bg-white rounded-md drop-shadow-lg">
 
-    <div class="flex gap-2">
-      <div>
-        <% if post.user.profile_picture.attached? %>
-          <%= image_tag post.user.profile_picture.variant(:thumb), class: "h-12 w-12 rounded-full object-cover" %>
-        <% else %>
-          <%= image_tag "default.jpeg", class: "h-12 w-12 rounded-full object-cover" %>
-        <% end %>
-      </div>
-      <div>
-        <div class="font-semibold">
-          <%= link_to post.user.full_name,
-            post.user,
-            data: { turbo_frame: "_top" } %>
+    <div class="flex justify-between">
+      <div class="flex gap-2">
+        <div>
+          <% if post.user.profile_picture.attached? %>
+            <%= image_tag post.user.profile_picture.variant(:thumb), class: "h-12 w-12 rounded-full object-cover" %>
+          <% else %>
+            <%= image_tag "default.jpeg", class: "h-12 w-12 rounded-full object-cover" %>
+          <% end %>
         </div>
-        <div class="text-gray-400 text-sm">
-          <%#= time_tag post.created_at, "data-local": "time-ago" %>
-          <%= local_time_ago(post.created_at) %>
+        <div>
+          <div class="font-semibold">
+            <%= link_to post.user.full_name,
+              post.user,
+              data: { turbo_frame: "_top" } %>
+          </div>
+          <div class="text-gray-400 text-sm">
+            <%#= time_tag post.created_at, "data-local": "time-ago" %>
+            <%= local_time_ago(post.created_at) %>
+          </div>
         </div>
       </div>
+      
+      <% if post.user == current_user %>
+        <div>
+            <%= link_to "Edit Post", [:edit, post] %>
+        </div>
+
+        <div>
+          <%= button_to "Delete Post",
+            post,
+            data: { turbo_frame: "_top" },
+            method: :delete %>
+        </div>
+    <% end %>
     </div>
     <p class="mt-2 mb-4 text-lg">
       <%= post.body %>
