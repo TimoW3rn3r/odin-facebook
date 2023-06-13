@@ -1,5 +1,7 @@
 <h1>Posts</h1>
 
-<%= render "form", post: Post.new %>
+<div class="my-4 bg-white px-8 py-4 rounded-md drop-shadow-lg">
+  <%= render "form", post: Post.new %>
+</div>
 
 <%= render @posts, all_comments: false %>
