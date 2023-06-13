@@ -77,18 +77,18 @@
     <div class="px-2 py-2">
       <% if all_comments %>
         <%= render post.comments %>
-        <%= render "comments/form", commentable: @post %>
+        <%= render "comments/form", comment: Comment.new, commentable: @post %>
       <% else %>
 
         <% if post.comments.any? %>
             <%= render post.comments.last %>
-            <%= render "comments/form", commentable: post %>
+            <%= render "comments/form", comment: Comment.new, commentable: post %>
 
           <div class="mt-4 text-slate-500 font-semibold">
             <%= link_to "View all comments", post %>
           </div>
         <% else %>
-          <%= render "comments/form", commentable: post %>
+          <%= render "comments/form", comment: Comment.new, commentable: post %>
         <% end %>
 
       <% end %>
