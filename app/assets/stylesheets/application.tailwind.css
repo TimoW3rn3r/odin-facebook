@@ -6,9 +6,11 @@
   h1 {
     @apply text-2xl font-bold my-4;
   }
+
   h2 {
     @apply text-xl font-bold my-4;
   }
+
   hr {
     @apply mt-2 mb-2 h-0.5 bg-slate-300;
   }
@@ -37,6 +39,13 @@
 
   .break-word {
     word-break: break-word;
+  }
+
+  .drop-down-container {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+    background-color: #ffffff;
+    @apply px-2 py-2;
+    @apply absolute top-6;
   }
 }
 
