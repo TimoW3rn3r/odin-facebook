@@ -50,7 +50,7 @@ class PostsController < ApplicationController
       flash[:notice] = "Post deleted successfully."
       redirect_back_or_to posts_path
     else
-      redirect_to @post
+      redirect_to posts_path
     end
   end
 
