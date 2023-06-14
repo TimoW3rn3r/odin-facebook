@@ -25,17 +25,8 @@
       </div>
       
       <% if post.user == current_user %>
-        <div>
-            <%= link_to "Edit Post", [:edit, post] %>
-        </div>
-
-        <div>
-          <%= button_to "Delete Post",
-            post,
-            data: { turbo_frame: "_top" },
-            method: :delete %>
-        </div>
-    <% end %>
+        <%= render "posts/menu", post: post %>
+      <% end %>
     </div>
     <p class="mt-2 mb-4 text-lg">
       <%= post.body %>

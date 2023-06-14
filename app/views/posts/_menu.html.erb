@@ -1,0 +1,22 @@
+<div
+  class="flex flex-col items-end relative"
+  data-controller="dropdown"
+  data-dropdown-change-class="hidden"
+>
+  <div class="px-2 border cursor-pointer hover:bg-slate-100" data-action="click->dropdown#toggleClass">
+    ...
+  </div>
+  <ul class="drop-down-container hidden" data-dropdown-target="content">
+    <li class="px-4 w-max rounded-md hover:bg-slate-100">
+      <%= link_to "Edit Post", [:edit, post] %>
+    </li>
+
+    <li>
+      <%= button_to "Delete Post",
+        post,
+        class: "px-4 w-max rounded-md hover:bg-slate-100",
+        data: { turbo_frame: "_top" },
+        method: :delete %>
+    </li>
+  </ul>
+</div>
