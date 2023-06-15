@@ -6,7 +6,9 @@
   <div class="flex gap-2 items-center font-semibold">
     <% if user_signed_in? %>
       <div class="">
-        <%= link_to "Home", posts_path %>
+        <%= link_to posts_path do %>
+          <%= image_tag "home.svg", class: "p-2 invert h-12 w-12 rounded-full hover:bg-orange-500" %>
+        <% end %>
       </div>
       <div class="">
         <%= link_to "Profile", profile_path %>
