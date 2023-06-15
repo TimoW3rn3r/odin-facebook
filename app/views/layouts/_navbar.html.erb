@@ -1,24 +1,40 @@
-<header class="py-2 px-2 md:px-6 flex justify-between bg-blue-800 text-white">
-  <div class="font-bold text-4xl">
+<header class="py-2 px-2 md:px-6 flex justify-between bg-blue-800">
+  <div class="font-bold text-4xl text-white">
     <%= link_to "Railsbook", root_path %>
   </div>
 
-  <div class="flex gap-2 items-center font-semibold">
+  <div class="flex gap-2 items-center">
     <% if user_signed_in? %>
       <div class="">
         <%= link_to posts_path do %>
           <%= image_tag "home.svg", class: "p-2 invert h-12 w-12 rounded-full hover:bg-orange-500" %>
         <% end %>
       </div>
-      <div class="">
-        <%= link_to "Profile", profile_path %>
-      </div>
-      <div class="text-sm text-gray-200">
-        <% if current_user.profile_picture.attached? %>
-          <%= button_to image_tag(current_user.profile_picture.variant(:thumb), class: "profile-picture-small"), destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= button_to image_tag("default.jpeg", class: "profile-picture-small"), destroy_user_session_path, method: :delete %>
-        <% end %>
+
+      <div
+        class="flex flex-col items-end relative"
+        data-controller="dropdown"
+        data-dropdown-change-class="hidden"
+      >
+        <div class="pointer rounded-full" data-action="click->dropdown#toggleClass">
+          <% if current_user.profile_picture.attached? %>
+            <%= image_tag current_user.profile_picture.variant(:thumb), class: "profile-picture-small" %>
+          <% else %>
+            <%= image_tag "default.jpeg", class: "profile-picture-small" %>
+          <% end %>
+        </div>
+        <ul class="drop-down-container top-10 hidden" data-dropdown-target="content">
+          <li class="px-4 w-max rounded-md text-gray-500">
+            <%= current_user.full_name %>
+          </li>
+          <hr>
+          <li class="px-4 min-w-max w-full rounded-md hover:bg-slate-100">
+            <%= link_to "Vew Profile", profile_path %>
+          </li>
+          <li class="px-4 min-w-max w-full rounded-md hover:bg-slate-100">
+            <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
+          </li>
+        </ul>
       </div>
     <% else %>
       <div class="text-sm text-gray-200 font-medium text-base">

@@ -44,8 +44,8 @@
   .drop-down-container {
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
     background-color: #ffffff;
-    @apply px-2 py-2;
-    @apply absolute top-6;
+    @apply px-2 py-2 rounded-md;
+    @apply absolute z-10;
   }
 }
 
