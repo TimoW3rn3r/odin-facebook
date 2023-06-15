@@ -22,7 +22,8 @@
       </div>
 
       <div class="px-4 flex gap-4 items-center text-gray-600 font-medium text-xs">
-        <span>♡
+        <span class="flex items-center">
+          <%= image_tag "thumb-up-white.svg", class: "mx-1 h-4 w-4 p-0.5 rounded-full bg-blue-500" %>
           <% if (likes_count = comment.likes.size) == 0 %>
             0
           <% else %>
@@ -31,13 +32,13 @@
               data: { turbo_frame: "_top" } %>
           <% end %>
         </span>
-        <div>
+        <div class="font-semibold">
           <% if like = find_like(comment, current_user) %>
-            <%= link_to "Like", [comment.commentable, comment, like],
-              data: { turbo_method: :delete },
-              class: "text-blue-500 font-semibold" %>
+            <%= button_to "Like", [comment.commentable, comment, like],
+              method: :delete,
+              class: "text-blue-500" %>
           <% else %>
-            <%= render "likes/form", likeable: comment %>
+            <%= button_to "Like", [comment.commentable, comment, Like.new] %>
           <% end %>
         </div>
         <% if comment.user == current_user %>
