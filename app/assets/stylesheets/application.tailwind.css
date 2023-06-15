@@ -47,5 +47,9 @@
     @apply px-2 py-2 rounded-md;
     @apply absolute z-10;
   }
+
+  .filter-blue {
+    filter: invert(55%) sepia(64%) saturate(5313%) hue-rotate(202deg) brightness(100%) contrast(94%);
+  }
 }
 

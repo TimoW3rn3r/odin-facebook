@@ -50,11 +50,15 @@
     <div class="flex gap-4 justify-around items-center text-gray-600 font-semibold">
       <div>
         <% if like = find_like(post, current_user) %>
-          <%= link_to "Like", [post, like],
-            data: { turbo_method: :delete },
-            class: "text-blue-500 font-bold" %>
+          <%= button_to [post, like], method: :delete, class: "flex items-center gap-2 filter-blue" do %>
+            <%= image_tag "thumb-up.svg", class: "h-6 w-6" %>
+            Like
+          <% end %>
         <% else %>
-          <%= render "likes/form", likeable: post %>
+          <%= button_to [post, Like.new], class: "flex items-center gap-2" do %>
+            <%= image_tag "thumb-up-outline.svg", class: "h-6 w-6" %>
+            Like
+          <% end %>
         <% end %>
       </div>
       <div>
